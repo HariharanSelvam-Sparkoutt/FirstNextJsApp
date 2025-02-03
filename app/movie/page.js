@@ -1,6 +1,19 @@
 export default async function Movie() {
-  const response = await fetch("https://freetestapi.com/api/v1/movies");
-  const movies = await response.json();
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+  const apiToken = process.env.NEXT_PUBLIC_API_TOKEN;
+  const response = await fetch(
+    "https://api.themoviedb.org/3/trending/all/day?language=en-US",
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${apiToken}`,
+        "X-API-Key": apiKey, // Replace with the actual header name required by the API
+      },
+    }
+  );
+  const data = await response.json();
+  const movies = data.results || [];
+  console.log(data.results);
 
   return (
     <div className="flex justify-center flex-col items-center">
@@ -10,8 +23,8 @@ export default async function Movie() {
             <div className="flex items-center justify-center">
               <a href="#">
                 <img
-                  className="rounded-t-lg w-32 h-24 flex items-center"
-                  src="https://www.svgrepo.com/download/120647/movie.svg"
+                  className="rounded-t-lg w-48 h-34 flex items-center rounded-lg"
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt="image"
                 />
               </a>
@@ -24,10 +37,10 @@ export default async function Movie() {
                 </h5>
               </a>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                {movie.plot}
+                {movie.overview}
               </p>
               <a
-                href="#"
+                href={`/movie/${movie.id}`}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 More
