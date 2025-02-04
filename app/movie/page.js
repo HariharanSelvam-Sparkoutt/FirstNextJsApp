@@ -7,7 +7,7 @@ export default async function Movie() {
       method: "GET",
       headers: {
         Authorization: `Bearer ${apiToken}`,
-        "X-API-Key": apiKey, // Replace with the actual header name required by the API
+        "X-API-Key": apiKey,
       },
     }
   );
@@ -18,50 +18,43 @@ export default async function Movie() {
   return (
     <div className="flex justify-center flex-col items-center">
       {movies.map((movie) => (
-        <div key={movie.id}>
-          <div className="max-w-sm m-3  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-            <div className="flex items-center justify-center">
-              <a href="#">
-                <img
-                  className="rounded-t-lg w-48 h-34 flex items-center rounded-lg"
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt="image"
-                />
-              </a>
-            </div>
-
-            <div className="p-5">
-              <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <div key={movie.id} className="w-full w-full">
+          <section className="bg-white dark:bg-gray-900">
+            <div className="flex max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+              <div className="mr-auto place-self-center lg:col-span-7">
+                <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
                   {movie.title}
-                </h5>
-              </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                {movie.overview}
-              </p>
-              <a
-                href={`/movie/${movie.id}`}
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                More
-                <svg
-                  className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
+                </h1>
+                <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                  {movie.overview}
+                </p>
+                <a
+                  href={`/movie/${movie.id}`}
+                  className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
+                  More Details
+                  <svg
+                    className="w-5 h-5 ml-2 -mr-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+              <div className="hidden lg:mt-0 lg:col-span-5 lg:flex w-48 h-48">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt="mockup"
+                />
+              </div>
             </div>
-          </div>
+          </section>
         </div>
       ))}
     </div>
