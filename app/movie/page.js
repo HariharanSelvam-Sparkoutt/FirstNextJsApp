@@ -18,9 +18,12 @@ export default async function Movie() {
   return (
     <div className="flex justify-center flex-col items-center">
       {movies.map((movie) => (
-        <div key={movie.id} className="w-full w-full">
-          <section className="bg-white dark:bg-gray-900">
-            <div className="flex max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <div key={movie.id} className="w-full px-4 py-8">
+          <section className="bg-gray dark:bg-gray-900">
+            <div
+              className="flex max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 bg-gray-400"
+              style={{ backgroundColor: "" }}
+            >
               <div className="mr-auto place-self-center lg:col-span-7">
                 <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
                   {movie.title}
@@ -42,13 +45,14 @@ export default async function Movie() {
                     <path
                       fillRule="evenodd"
                       d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                 </a>
               </div>
-              <div className="hidden lg:mt-0 lg:col-span-5 lg:flex w-48 h-48">
+              <div>
                 <img
+                  className="lg:mt-0 lg:col-span-5 lg:flex w-64 h-64"
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt="mockup"
                 />

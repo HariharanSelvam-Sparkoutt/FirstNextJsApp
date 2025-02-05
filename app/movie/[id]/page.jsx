@@ -34,7 +34,7 @@ export default async function MovieDetails({ params }) {
         Rating: {movie.vote_average} / 10 ({movie.vote_count} votes)
       </p>
       <a
-        href="/"
+        href="/movie"
         className="mt-4 px-4 py-2 text-white bg-blue-700 rounded-lg hover:bg-blue-800"
       >
         Back to Movies
