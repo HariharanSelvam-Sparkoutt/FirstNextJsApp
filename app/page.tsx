@@ -11,7 +11,6 @@ export default function Home() {
   // const navToMovies = () => {
   //   router.push("/movie");
   // };
-
   return (
     <>
       <section className="bg-white dark:bg-gray-900">
