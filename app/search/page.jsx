@@ -30,7 +30,7 @@ export default function Search() {
   };
 
   return (
-    <div className="w-full">
+    <div className="p-4">
       <h1 className="text-center text-2xl font-bold my-4">Search Movies</h1>
 
       <form className="max-w-md w-full mx-auto" onSubmit={searchMovies}>
